@@ -15,24 +15,17 @@
         <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased bg-[#13152b]">
+    <body class="font-sans antialiased bg-[#13152b] overflow-y-scroll scrollbar-hide">
         <div id="tsparticles" class="bg-black opacity-30"></div>
-        <div class="min-h-screen relative">
+        <div class="min-h-screen flex flex-col">
             <livewire:layout.navigation />
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
             <!-- Page Content -->
-            <main>
+            <main class="flex-grow">
                 {{ $slot }}
             </main>
+
+            <livewire:layout.footer />
         </div>
     </body>
 </html>

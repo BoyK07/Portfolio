@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'portfolio.index')
     ->name('home');
 
-Route::view('dashboard', 'dashboard')
+Route::view('admin', 'admin')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
