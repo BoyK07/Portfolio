@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'portfolio.index')
+Route::group([], function() {
+    Route::view('/', 'portfolio.index')
     ->name('home');
+
+    Route::view('/projects', 'portfolio.all-projects')
+        ->name('projects');
+});
 
 Route::view('admin', 'admin')
     ->middleware(['auth', 'verified'])

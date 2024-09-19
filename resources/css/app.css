@@ -8,6 +8,6 @@
 .scrollbar-hide {
     -ms-overflow-style: none;
 }
-.hero h1 {
+.hero a {
     margin-left: -6px;
 }

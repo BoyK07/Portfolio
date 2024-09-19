@@ -1,9 +1,9 @@
 <section class="hero h-screen flex items-center text-white relative z-10 mx-[35%]">
     <div class="text-left -mt-24">
-        <h2 class="text-xl">Hey there, I'm</h2>
-        <a href="https://github.com/BoyK07">
-            <h1 class="text-8xl font-extrabold pb-4 bg-gradient-to-r from-[#34e3b2] to-[#006Cb3] text-transparent bg-clip-text">BoyK07</h1>
-        </a>
+        <div class="pb-2">
+            <h2 class="text-xl">Hey there, I'm</h2>
+            <a href="https://github.com/BoyK07" class="text-8xl font-extrabold bg-gradient-to-r from-[#34e3b2] to-[#006Cb3] text-transparent bg-clip-text">BoyK07</a>
+        </div>
         <div class="flex justify-between">
             <p class="text-xl font-medium flex-none">
                 <span class="text-white">Software Developer. </span>

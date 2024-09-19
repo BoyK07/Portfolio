@@ -1,4 +1,7 @@
 <section class="text-white relative z-10 px-36">
+    <div class="w-full text-right pr-10 pb-3">
+        <a href="/projects" class="bg-[#13152b] text-white border-2 border-white px-4 py-2 rounded-lg">View All</a>
+    </div>
     <div class="flex w-full">
         <div class="text-left">
             <h1 class="text-4xl text-white font-bold w-fit">Projects</h1>
