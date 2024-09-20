@@ -1,4 +1,4 @@
-<section class="hero h-screen flex items-center text-white relative z-10 mx-[35%]">
+<section class="hero h-screen flex items-center text-white relative z-10 mx-[35%]" id="hero">
     <div class="text-left -mt-24">
         <div class="pb-4">
             <h2 class="text-xl">Hey there, I'm</h2>
