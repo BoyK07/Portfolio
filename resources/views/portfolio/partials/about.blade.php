@@ -2,9 +2,18 @@
 	<div class="flex w-full justify-between">
 		<div class="text-left">
 			<h1 class="text-4xl text-white font-bold w-fit">Who am I?</h1>
-			<h2 class="text-2xl text-gray-400">Placeholder text</h2>
+			<p class="text-2xl text-gray-400 w-3/4">
+                <span>
+                    My name is Boy, and I'm a <?php echo (new DateTime('now'))->diff(new DateTime('2005-06-07'))->y ?>-year-old software developer from the Netherlands.<br/>
+                    I've been coding for about <?php echo (new DateTime('now'))->diff(new Datetime('2020-03-05'))->y ?> years, focusing mainly on web development.
+                    I have experience in various programming languages and technologies,
+                    including PHP, JavaScript, Python, Java, Docker, MySQL, C#, Laravel, CodeIgniter, and jQuery.<br/>
+                    My favorites languages are PHP and Python. I especially like Python when it comes to automating tasks or services.
+                    I'm currently studiying at Curio in Breda, where i am currently further specializing in web development
+                </span>
+            </p>
 		</div>
-		<div class="mx-auto w-[30%] p-6 bg-[#13152ab9] rounded-lg shadow-lg h-96 overflow-y-auto border border-[#25283c]" id="terminal">
+		<div class="mx-auto w-full p-6 bg-[#13152ab9] rounded-lg shadow-lg h-96 overflow-y-auto border border-[#25283c]" id="terminal">
 			<div id="output" class="text-sm font-mono pb-2 flex flex-col">
 				<span>Welcome to the terminal.</span>
 				<span>Type 'help' to see all available commands.</span>
@@ -32,27 +41,27 @@
         github: 'This is my GitHub: <a href="https://github.com/BoyK07" target="_blank"><u>https://github.com/BoyK07</u></a>',
         hobbies: 'In my free time, I enjoy automating various things, gaming, and working on personal development projects.',
         ls: 'Documents  Downloads  Projects  Skills  Experience',
-        name: 'My name is Boy. I am a software developer passionate about backend development.',
         neofetch: `
-<b>Boy's PC</b><br/>
---------------------<br/>
-<b>OS:</b> Windows 10<br/>
-<b>Host:</b> Web-based Terminal<br/>
-<b>Kernel:</b> 10.0.19044 (Windows 10 Pro)<br/>
-<b>Uptime:</b> 3 hours, 22 mins<br/>
-<b>Packages:</b> N/A (Windows system)<br/>
-<b>Shell:</b> PowerShell 7.2.3<br/>
-<b>Resolution:</b> 2560x1440 @ 165Hz, 2560x1440 @ 60Hz<br/>
-<b>DE:</b> Windows Explorer<br/>
-<b>WM:</b> DWM (Desktop Window Manager)<br/>
-<b>WM Theme:</b> Dark<br/>
-<b>Terminal:</b> Windows Terminal<br/>
-<b>CPU:</b> AMD Ryzen 9 7900X (12-core, 24-thread) @ 4.7GHz<br/>
-<b>GPU:</b> NVIDIA GeForce RTX 4070 OC<br/>
-<b>Memory:</b> 32GB DDR5`,
+            <b>Boy's PC</b><br/>
+            --------------------<br/>
+            <b>OS:</b> Windows 10<br/>
+            <b>Host:</b> Web-based Terminal<br/>
+            <b>Kernel:</b> 10.0.19044 (Windows 10 Pro)<br/>
+            <b>Uptime:</b> 3 hours, 22 mins<br/>
+            <b>Packages:</b> N/A (Windows system)<br/>
+            <b>Shell:</b> PowerShell 7.2.3<br/>
+            <b>Resolution:</b> 2560x1440 @ 165Hz, 2560x1440 @ 60Hz<br/>
+            <b>DE:</b> Windows Explorer<br/>
+            <b>WM:</b> DWM (Desktop Window Manager)<br/>
+            <b>WM Theme:</b> Dark<br/>
+            <b>Terminal:</b> Windows Terminal<br/>
+            <b>CPU:</b> AMD Ryzen 9 7900X (12-core, 24-thread) @ 4.7GHz<br/>
+            <b>GPU:</b> NVIDIA GeForce RTX 4070 OC<br/>
+            <b>Memory:</b> 32GB DDR5`,
         os: 'Main OS: Windows 10<br/>Server OS: Ubuntu 22.04',
         pwd: '/home/guest/portfolio',
-        skills: 'Languages: Python, PHP, JavaScript, Java.<br/>Frameworks: Laravel, CodeIgniter, TailwindCSS.<br/>Other Tools: Git, Docker.'
+        skills: 'Languages: Python, PHP, JavaScript, Java.<br/>Frameworks: Laravel, CodeIgniter, TailwindCSS.<br/>Other Tools: Git, Docker.',
+        whoami: 'My name is Boy. I am a software developer passionate about backend development.'
     };
 
 
