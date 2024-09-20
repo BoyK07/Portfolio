@@ -18,9 +18,10 @@ import { tsParticles } from "@tsparticles/engine";
 import Typed from 'typed.js';
 
 new Typed('#languages', {
-    strings: ['PHP', 'Javascript', 'Python', 'Laravel', 'Java',],
+    strings: ['PHP', 'Javascript', 'Python', 'Laravel', 'Java', 'Docker', 'MySQL', 'Linux'],
     typeSpeed: 50,
     shuffle: true,
     backDelay: 1000,
-    backSpeed: 50
+    backSpeed: 50,
+    loop: true,
 });

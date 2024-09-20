@@ -14,6 +14,9 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="font-sans antialiased bg-[#13152b] overflow-y-scroll scrollbar-hide">
         <div id="tsparticles" class="bg-black opacity-30"></div>
