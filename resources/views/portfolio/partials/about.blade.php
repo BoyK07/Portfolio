@@ -1,4 +1,4 @@
-<section class="text-white relative z-10 px-36 mb-72" id="about">
+<section class="text-white relative z-10 px-36 pb-72" id="about">
 	<div class="flex w-full justify-between">
 		<div class="text-left">
 			<h1 class="text-4xl text-white font-bold w-fit">Who am I?</h1>

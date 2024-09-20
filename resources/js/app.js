@@ -42,10 +42,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to scroll smoothly to a section
     window.scrollToSection = function (sectionId) {
-        const section = sections[sectionId];
+        const section = document.getElementById(sectionId);
         if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-            setActiveNav(sectionId); // Set active navigation when clicked
+            // Get the position of the section and adjust by 64px
+            const sectionPosition = section.getBoundingClientRect().top + window.scrollY - 64;
+
+            // Scroll to the calculated position with smooth behavior
+            window.scrollTo({
+                top: sectionPosition,
+                behavior: 'smooth'
+            });
         }
     };
 
