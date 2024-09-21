@@ -16,7 +16,7 @@ new class extends Component
     }
 }; ?>
 
-<nav x-data="{ open: false }" class="bg-[#13152b] opacity-80 fixed px-80 z-50 w-full">
+<nav x-data="{ open: false }" class="bg-[#13152b] opacity-80 fixed px- z-50 w-full">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
