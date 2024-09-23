@@ -24,12 +24,13 @@
         </form>
     </div>
 </section>
+@include('components.toast')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('contactForm');
 
         form.addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent the default form submission
 
             const formData = new FormData(form);
             const csrfToken = document.querySelector('input[name="_token"]').value;
@@ -45,43 +46,20 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    Pines.toast({
-                        title: 'Success',
-                        text: data.message,
-                        duration: 3000,
-                        position: 'bottom-right',
-                        theme: 'success',
-                        expanded: true,
-                    });
+                    // Success toast notification
+                    window.dispatchEvent(new CustomEvent('toast-show', { detail: { message: data.message, type: 'success' }}));
 
+                    // Reset the form
                     form.reset();
                 } else {
-                    let errorMessage = '';
-                    for (let error in data.errors) {
-                        errorMessage += data.errors[error][0] + '\n';
-                    }
-
-                    Pines.toast({
-                        title: 'Error',
-                        text: errorMessage,
-                        duration: 3000,
-                        position: 'bottom-right',
-                        theme: 'danger',
-                        expanded: true,
-                    });
+                    // Error toast notification
+                    window.dispatchEvent(new CustomEvent('toast-show', { detail: { message: data.message || 'Something went wrong.', type: 'danger' }}));
                 }
             })
             .catch(error => {
-                Pines.toast({
-                    title: 'Error',
-                    text: 'There was an error submitting the form. Please try again.',
-                    duration: 3000,
-                    position: 'bottom-right',
-                    theme: 'danger',
-                    expanded: true,
-                });
+                // General error toast notification
+                window.dispatchEvent(new CustomEvent('toast-show', { detail: { message: 'An error occurred while submitting the form.', type: 'danger' }}));
             });
         });
     });
 </script>
-

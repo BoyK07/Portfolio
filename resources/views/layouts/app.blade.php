@@ -12,13 +12,11 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://unpkg.com/@pinesdev/pines@latest/css/pines.min.css" />
-        <script src="https://unpkg.com/@pinesdev/pines@latest/js/pines.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/preset-stars@3/tsparticles.preset.stars.bundle.min.js"></script>
     </head>
     <body class="font-sans antialiased bg-[#13152b] overflow-y-scroll scrollbar-hide">
         <div id="tsparticles" class="bg-black opacity-30"></div>
