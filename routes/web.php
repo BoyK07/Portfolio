@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::group([], function() {
 
     Route::view('/projects', 'portfolio.all-projects')
         ->name('projects');
+
+    Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 });
 
 Route::view('admin', 'admin')

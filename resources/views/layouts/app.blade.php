@@ -17,6 +17,8 @@
 
         <!-- CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://unpkg.com/@pinesdev/pines@latest/css/pines.min.css" />
+        <script src="https://unpkg.com/@pinesdev/pines@latest/js/pines.min.js"></script>
     </head>
     <body class="font-sans antialiased bg-[#13152b] overflow-y-scroll scrollbar-hide">
         <div id="tsparticles" class="bg-black opacity-30"></div>

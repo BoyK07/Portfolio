@@ -2,7 +2,7 @@
 	<div class="flex w-full justify-between">
 		<div class="text-left">
 			<h1 class="text-4xl text-white font-bold w-fit">Who am I?</h1>
-			<p class="text-2xl text-gray-400 w-7/12">
+			<p class="text-2xl text-gray-400 w-9/12">
                 <span>
                     My name is Boy, and I'm a <?php echo (new DateTime('now'))->diff(new DateTime('2005-06-07'))->y ?>-year-old software developer from the Netherlands.<br/>
                     I've been coding for about <?php echo (new DateTime('now'))->diff(new Datetime('2020-03-05'))->y ?> years, focusing mainly on web development.
@@ -13,7 +13,7 @@
                 </span>
             </p>
 		</div>
-		<div class="mx-auto w-5/12 mr-40 p-6 bg-[#13152ab9] rounded-lg shadow-lg h-96 overflow-y-auto border border-[#25283c]" id="terminal">
+		<div class="mx-auto w-full mr-40 p-6 bg-[#13152ab9] rounded-lg shadow-lg h-96 overflow-y-auto border border-[#25283c]" id="terminal">
 			<div id="output" class="text-sm font-mono pb-2 flex flex-col">
 				<span>Welcome to the terminal.</span>
 				<span>Type 'help' to see all available commands.</span>
