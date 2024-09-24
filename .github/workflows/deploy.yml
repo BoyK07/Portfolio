@@ -1,0 +1,38 @@
+name: Deploy to Portfolio
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your desired branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'  # Adjust PHP version if needed
+
+      - name: Install Deployer
+        run: |
+          composer global require deployer/deployer
+
+      - name: Set up SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p 4000 ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+
+      - name: Run Deployment
+        env:
+          VPS_IP: ${{ secrets.VPS_IP }}
+        run: |
+          dep deploy production
