@@ -13,7 +13,7 @@ host('production')
     ->set('remote_user', 'boy')
     ->set('port', 4000)
     ->set('deploy_path', '/home/boy/websites/portfolio')
-    ->set('password', $vpsPassword);  // Set password-based authentication
+    ->set('password', $vpsPassword);  // Use password-based authentication
 
 // Define deployment tasks
 task('startsite', function () {
@@ -21,6 +21,6 @@ task('startsite', function () {
 });
 
 // Hooks
-after('deploy:symlink', 'startsite');
-after('deploy:failed', 'deploy:unlock');
-after('deploy:success', 'deploy:unlock');
+after('deploy:symlink', 'startsite'); // Run after code is deployed
+after('deploy:failed', 'deploy:unlock'); // Unlock on failure
+after('deploy:success', 'deploy:unlock'); // Unlock on success

@@ -27,6 +27,7 @@ jobs:
           VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
           VPS_IP: ${{ secrets.VPS_IP }}
         run: |
+          sudo apt-get update && sudo apt-get install -y sshpass
           sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no boy@${{ secrets.VPS_IP }} -p 4000 "echo 'Password authentication successful'"
 
       - name: Run Deployment
