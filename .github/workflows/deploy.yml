@@ -3,7 +3,7 @@ name: Deploy to Portfolio
 on:
   push:
     branches:
-      - master  # Adjust to your desired branch
+      - main  # Or master if that's your default branch
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p 4000 ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
 
