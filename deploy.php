@@ -3,15 +3,17 @@ namespace Deployer;
 
 require 'recipe/laravel.php';
 
-// Retrieve the server IP from the environment variable
+// Retrieve the server IP and password from environment variables
 $vpsIP = getenv('VPS_IP');
+$vpsPassword = getenv('VPS_PASSWORD');
 
 // Server configuration
-host('production') // Name the host 'production'
+host('production')
     ->set('hostname', $vpsIP)  // Use the IP from environment variables
     ->set('remote_user', 'boy')
     ->set('port', 4000)
-    ->set('deploy_path', '/home/boy/websites/portfolio');
+    ->set('deploy_path', '/home/boy/websites/portfolio')
+    ->set('password', $vpsPassword);  // Set password-based authentication
 
 // Define deployment tasks
 task('startsite', function () {
@@ -19,6 +21,6 @@ task('startsite', function () {
 });
 
 // Hooks
-after('deploy:symlink', 'startsite'); // This runs after the code has been deployed
-after('deploy:failed', 'deploy:unlock'); // Unlock on failure
-after('deploy:success', 'deploy:unlock'); // Unlock on success
+after('deploy:symlink', 'startsite');
+after('deploy:failed', 'deploy:unlock');
+after('deploy:success', 'deploy:unlock');

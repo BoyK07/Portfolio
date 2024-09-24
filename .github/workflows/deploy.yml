@@ -24,15 +24,14 @@ jobs:
 
       - name: Set up SSH
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+          VPS_IP: ${{ secrets.VPS_IP }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 4000 ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no boy@${{ secrets.VPS_IP }} -p 4000 "echo 'Password authentication successful'"
 
       - name: Run Deployment
         env:
           VPS_IP: ${{ secrets.VPS_IP }}
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         run: |
           dep deploy production
