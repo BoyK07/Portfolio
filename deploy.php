@@ -13,7 +13,8 @@ host('production')
     ->set('remote_user', 'boy')
     ->set('port', 4000)
     ->set('deploy_path', '/home/boy/websites/portfolio')
-    ->set('password', $vpsPassword);  // Use password-based authentication
+    ->set('password', $vpsPassword)  // Use password-based authentication
+    ->set('identityFile', false);  // Disable using SSH keys
 
 // Define deployment tasks
 task('startsite', function () {
