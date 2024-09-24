@@ -3,7 +3,7 @@ name: Deploy to Portfolio
 on:
   push:
     branches:
-      - main  # Adjust to your desired branch
+      - master  # Adjust to your desired branch
 
 jobs:
   deploy:
