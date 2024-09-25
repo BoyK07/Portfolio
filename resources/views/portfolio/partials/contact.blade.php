@@ -19,7 +19,10 @@
 			</div>
 
 			<div>
-				<button type="submit" class="w-full py-2 px-4 bg-[#2c2e43] text-white font-semibold rounded-md">Send Message</button>
+				<button type="submit" id="submitBtn" class="w-full py-2 px-4 bg-[#2c2e43] text-white font-semibold rounded-md">
+                    <span id="buttonText">Send Message</span>
+                    <img id="buttonSpinner" src="{{ asset('assets/svg/loading.svg') }}" alt="Loading..." class="hidden w-5 h-5 inline-block">
+                </button>
 			</div>
 		</form>
 	</div>
@@ -28,10 +31,17 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const buttonText = document.getElementById('buttonText');
+    const buttonSpinner = document.getElementById('buttonSpinner');
 
-    // Add submit listener with async
     form.addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent the default form submission
+
+        // Show spinner and hide button text
+        buttonText.classList.add('hidden');
+        buttonSpinner.classList.remove('hidden');
+        submitBtn.disabled = true; // Disable the button to prevent multiple submissions
 
         const formData = new FormData(form);
         const csrfToken = document.querySelector('input[name="_token"]').value;
@@ -51,22 +61,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (data.status === 'success') {
                 // Success toast notification
-                toastShow = new CustomEvent('toast-show', { detail: { message: data.message, type: 'success' }});
-                // Reset the form
-                form.reset();
+                toastShow = new CustomEvent('toast-show', { detail: { message: data.message, type: 'success' } });
+                form.reset(); // Reset the form on success
             } else {
                 // Error toast notification
                 let errorMessages = Object.values(data.errors).flat().join('<br/>');
-                toastShow = new CustomEvent('toast-show', { detail: { message: errorMessages || 'Something went wrong.', type: 'danger' }});
+                toastShow = new CustomEvent('toast-show', { detail: { message: errorMessages || 'Something went wrong.', type: 'danger' } });
             }
         } catch (error) {
             // General error toast notification
-            toastShow = new CustomEvent('toast-show', { detail: { message: 'Something went wrong.', type: 'danger' }});
+            toastShow = new CustomEvent('toast-show', { detail: { message: 'Something went wrong.', type: 'danger' } });
         }
 
         // Dispatch the toast event
         window.dispatchEvent(toastShow);
+
+        // Revert button to its original state
+        buttonText.classList.remove('hidden');
+        buttonSpinner.classList.add('hidden');
+        submitBtn.disabled = false; // Re-enable the button
     });
 });
-
 </script>
