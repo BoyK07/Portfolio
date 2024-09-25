@@ -12,102 +12,12 @@
             }
             toast(this.title, { description: this.description, type: this.type, position: this.position, html: html })
         }
-    }" x-init="window.toast = function(message, options = {}) {
-        let description = '';
-        let type = 'default';
-        let position = 'bottom-right';
-        let html = '';
-        if (typeof options.description != 'undefined') description = options.description;
-        if (typeof options.type != 'undefined') type = options.type;
-        if (typeof options.position != 'undefined') position = options.position;
-        if (typeof options.html != 'undefined') html = options.html;
-        window.dispatchEvent(new CustomEvent('toast-show', { detail: { type: type, message: message, description: description, position: position, html: html } }));
-    }
-    window.customToastHTML = `
-        <div class='relative flex items-start justify-center p-4'>
-        <img src='https://cdn.devdojo.com/images/august2023/headshot-new.jpeg' class='w-10 h-10 mr-2 rounded-full'>
-        <div class='flex flex-col'>
-        <p class='text-sm font-medium text-gray-800'>New Friend Request</p>
-        <p class='mt-1 text-xs leading-none text-gray-800'>Friend request from John Doe.</p>
-        <div class='flex mt-3'>
-        <button type='button' @click='burnToast(toast.id)' class='inline-flex items-center px-2 py-1 text-xs font-semibold text-white bg-indigo-600 rounded shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Accept</button>
-        <button type='button' @click='burnToast(toast.id)' class='inline-flex items-center px-2 py-1 ml-3 text-xs font-semibold text-gray-900 bg-white rounded shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>Decline</button>
-        </div>
-        </div>
-        </div>
-        `" class="relative space-y-5">
-        {{-- <div class="relative">
-            <p class="mb-2 text-xs font-medium text-center text-gray-500 sm:text-left">Types</p>
-            <div class="relative flex flex-col px-10 space-y-2 sm:space-x-5 sm:space-y-0 sm:flex-row sm:px-0">
-                <button @click="title='Default Toast Notification'; type='default'; description=''; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': type=='default' && description=='' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Default</button>
-                <button
-                    @click="title='Toast Notification'; type='default'; description='This is an example toast notification'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': type=='default' && description!='' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">With
-                    Description</button>
-                <button @click="title='Success Notification'; type='success'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': type=='success' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Success</button>
-                <button @click="title='Info Notification'; type='info'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': type=='info' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Info</button>
-                <button @click="title='Warning Notification'; type='warning'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': type=='warning' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Warning</button>
-                <button @click="title='Danger Notification'; type='danger'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': type=='danger' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Danger</button>
-                <button @click="popToast(customToastHTML)" :class="{ 'ring-2 ring-neutral-200/60': type=='success' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Custom</button>
-            </div>
-        </div>
-        <div class="relative">
-            <p class="mb-2 text-xs font-medium text-center text-gray-500 sm:text-left">Position</p>
-            <div class="relative flex flex-col px-10 space-y-2 sm:space-x-5 sm:space-y-0 sm:flex-row sm:px-0">
-                <button @click="position='top-left'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': position=='top-left' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Top
-                    Left</button>
-                <button @click="position='top-center'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': position=='top-center' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Top
-                    Center</button>
-                <button @click="position='top-right'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': position=='top-right' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Top
-                    Right</button>
-                <button @click="position='bottom-right'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': position=='bottom-right' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Bottom
-                    Right</button>
-                <button @click="position='bottom-center'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': position=='bottom-center' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Bottom
-                    Center</button>
-                <button @click="position='bottom-left'; popToast()"
-                    :class="{ 'ring-2 ring-neutral-200/60': position=='bottom-left' }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Bottom
-                    Left</button>
-            </div>
-        </div>
-        <div class="relative">
-            <p class="mb-2 text-xs font-medium text-center text-gray-500 sm:text-left">Layout</p>
-            <div class="relative flex flex-col px-10 space-y-2 sm:space-x-5 sm:space-y-0 sm:flex-row sm:px-0">
-                <button
-                    @click="expanded=false; window.dispatchEvent(new CustomEvent('set-toasts-layout', { detail: { layout: 'default' }}));"
-                    :class="{ 'ring-2 ring-neutral-200/60': !expanded }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Default</button>
-                <button
-                    @click="expanded=true; window.dispatchEvent(new CustomEvent('set-toasts-layout', { detail: { layout: 'expanded' }}));"
-                    :class="{ 'ring-2 ring-neutral-200/60': expanded }"
-                    class="inline-flex items-center justify-center flex-shrink-0 px-3 py-1 text-xs font-medium transition-colors border rounded-md h-9 hover:bg-gray-50 active:bg-white focus:bg-white focus:outline-none">Expanded</button>
-            </div>
-        </div> --}}
+    }"
+    class="relative space-y-5">
     </div>
     <template x-teleport="body">
-        <ul x-data="{
+        <ul
+        x-data="{
             toasts: [],
             toastsHovered: false,
             expanded: false,
@@ -324,20 +234,22 @@
     }
     stackToasts();
     "
-            @toast-show.window="
+    @toast-show.window="
+    console.log('Toast event triggered');
     event.stopPropagation();
-    if(event.detail.position){
-    position = event.detail.position;
+    if (event.detail.position) {
+        position = event.detail.position;
     }
     toasts.unshift({
-    id: 'toast-' + Math.random().toString(16).slice(2),
-    show: false,
-    message: event.detail.message,
-    description: event.detail.description,
-    type: event.detail.type,
-    html: event.detail.html
+        id: 'toast-' + Math.random().toString(16).slice(2),
+        show: false,
+        message: event.detail.message,
+        description: event.detail.description,
+        type: event.detail.type,
+        html: event.detail.html
     });
-    "
+"
+
             @mouseenter="toastsHovered=true;" @mouseleave="toastsHovered=false" x-init="if (layout == 'expanded') {
                 expanded = true;
             }
@@ -441,7 +353,7 @@
                                             fill="currentColor"></path>
                                     </svg>
                                     <p class="text-[13px] font-medium leading-none text-gray-800"
-                                        x-text="toast.message"></p>
+                                        x-html="toast.message"></p>
                                 </div>
                                 <p x-show="toast.description" :class="{ 'pl-5': toast.type!='default' }"
                                     class="mt-1.5 text-xs leading-none opacity-70" x-text="toast.description"></p>
