@@ -27,8 +27,6 @@
 @include('components.toast')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOMContentLoaded event triggered');
-
     const form = document.getElementById('contactForm');
 
     // Add submit listener with async
@@ -54,24 +52,20 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.status === 'success') {
                 // Success toast notification
                 toastShow = new CustomEvent('toast-show', { detail: { message: data.message, type: 'success' }});
-                console.log('Success toast created');
                 // Reset the form
                 form.reset();
             } else {
                 // Error toast notification
                 let errorMessages = Object.values(data.errors).flat().join('<br/>');
                 toastShow = new CustomEvent('toast-show', { detail: { message: errorMessages || 'Something went wrong.', type: 'danger' }});
-                console.log('Error toast created');
             }
         } catch (error) {
             // General error toast notification
             toastShow = new CustomEvent('toast-show', { detail: { message: 'Something went wrong.', type: 'danger' }});
-            console.log('Catch block toast created');
         }
 
         // Dispatch the toast event
         window.dispatchEvent(toastShow);
-        console.log('Toast event dispatched');
     });
 });
 
