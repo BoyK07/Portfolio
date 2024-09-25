@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomEmail extends Mailable
+class CustomEmailUser extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,6 +32,6 @@ class CustomEmail extends Mailable
     public function build()
     {
         return $this->subject($this->subject)
-                    ->view('emails.custom_email');
+                    ->view('emails.user_mail');
     }
 }

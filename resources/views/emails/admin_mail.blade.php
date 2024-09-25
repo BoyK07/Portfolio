@@ -38,7 +38,7 @@
         <div class="content">
             <p style="border: #8a8a8a 1px solid; padding: 10px; border-radius: 5px; background-color: #f7f7f7;">Name: {{$details['name']}}</p>
             <p style="border: #8a8a8a 1px solid; padding: 10px; border-radius: 5px; background-color: #f7f7f7;">Email: {{$details['email']}}</p>
-            <p>Message:<br><br><span style="border: #8a8a8a 1px solid; padding: 10px; border-radius: 5px; background-color: #f7f7f7;"> {{ $details['message'] }}</span></p>
+            <p>Message:<br><br><span>{{ $details['message'] }}</span></p>
         </div>
     </div>
 </body>

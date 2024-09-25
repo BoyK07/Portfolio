@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\CustomEmail;
+use App\Mail\CustomEmailAdmin;
+use App\Mail\CustomEmailUser;
 
 class ContactController extends Controller
 {
@@ -24,16 +25,22 @@ class ContactController extends Controller
             ], 422);
         }
 
-        // Send email
+        // Send email to admin
         $details = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'message' => $request->input('message'),
         ];
+        $subject = "New contact form submision on BoyK07 - Portfolio";
+        Mail::to(getenv('ADMIN_MAIL'))->send(new CustomEmailAdmin($details, $subject));
 
-        $subject = "New Contact Form Submission";
+        # Send email to user
+        $details = [
+            'name' => $request->input('name'),
+        ];
+        $subject = "Thank you for contacting me!";
+        Mail::to($request->input('email'))->send(new CustomEmailUser($details, $subject));
 
-        Mail::to(getenv('ADMIN_MAIL'))->send(new CustomEmail($details, $subject));
 
         return response()->json([
             'status' => 'success',
