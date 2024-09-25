@@ -1,4 +1,4 @@
-<section class="bg-[#13152b] text-white py-12 px-4 relative z-10">
+<section class="bg-[#13152b] text-white py-12 px-4 relative z-10" id="contact">
 	<div class="max-w-xl mx-auto">
 		<h2 class="text-3xl font-semibold text-center mb-6">Contact Me</h2>
 		<form id="contactForm" class="space-y-6">
@@ -19,7 +19,7 @@
 			</div>
 
 			<div>
-				<button type="submit" id="submitBtn" class="w-full py-2 px-4 bg-[#2c2e43] text-white font-semibold rounded-md">
+				<button type="submit" id="submitBtn" class="w-full py-2 px-4 bg-[#2c2e43] text-white font-semibold rounded-md hover:bg-[#25283c]">
                     <span id="buttonText">Send Message</span>
                     <img id="buttonSpinner" src="{{ asset('assets/svg/loading.svg') }}" alt="Loading..." class="hidden w-5 h-5 inline-block">
                 </button>

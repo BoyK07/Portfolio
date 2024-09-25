@@ -106,4 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         scrollToSection('projects');
     });
+
+    document.getElementById('contact-nav').addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSection('contact');
+    });
 });

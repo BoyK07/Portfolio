@@ -41,6 +41,14 @@ new class extends Component
                     </x-nav-link>
                 </div>
             </div>
+            <div class="flex items-center justify-end">
+                <div class="bg-gradient-to-r from-[#34e3b2] to-[#006Cb3] rounded-xl p-1.5">
+                    <x-nav-link href="#contact" id="contact-nav" class="nav-link text-white hover:border-none border-none">
+                        {{ __('Contact me!') }}
+                    </x-nav-link>
+                </div>
+            </div>
+
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
