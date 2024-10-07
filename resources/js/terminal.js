@@ -131,8 +131,8 @@ async function terminalAI(prompt) {
         mhysticalMsg.push({ role: "assistant", content: completion });
         appendOutput("Assistant: " + completion);
     } else {
-        appendOutput('Error: Unable to fetch response from AI.');
+        appendOutput("It seems it's time to take a break, and I won't be able to answer any more questions for now. (Rate limit reached)");
     }
-
+    
     scrollToBottom();
 }
