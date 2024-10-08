@@ -134,7 +134,8 @@ async function terminalAI(prompt) {
         document.getElementById('tempLoad').remove();
         appendOutput("Assistant: " + completion);
     } else {
-        appendOutput("It seems it's time to take a break, and I won't be able to answer any more questions for now. (Rate limit reached)");
+        document.getElementById('tempLoad').remove();
+        appendOutput("Assistant: It seems it's time to take a break, and I won't be able to answer any more questions for now. (Rate limit reached)");
     }
 
     scrollToBottom();
