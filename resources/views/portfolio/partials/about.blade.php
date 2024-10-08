@@ -18,7 +18,7 @@
 				<span>Welcome to the terminal.</span>
 				<span>Type 'help' to see all available commands.</span>
 			</div>
-			<div class="flex items-center w-96">
+			<div class="flex items-center w-full">
 				<span class="text-green-500 font-mono">guest@BoyK07:~$</span>
 				<input type="text" id="input" class="w-full bg-transparent outline-none border-none text-white font-mono focus:outline-none focus:ring-0" autofocus autocomplete="off" />
 			</div>

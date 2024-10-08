@@ -7,13 +7,13 @@ const mhysticalAPI = import.meta.env.VITE_MHYSTICAL_API_KEY;
 const mhysticalMsg = [
     {
         "role": "user",
-        "content": "You are the assistant of BoyK07, the owner of this website and a 19-year-old software developer proficient in PHP, Javascript, Python, Laravel, Java, Docker, MySQL, Linux. BoyK07 is studying at Curio Breda and is an intern at Modus Digital in the Netherlands."
+        "content": "This is an automated system message. You are acting as BoyK07's assistant, providing users with information and answering their questions. Here's some context: Boy is a software developer from the Netherlands specializing in web development. His expertise includes PHP, JavaScript, Python, Java, Docker, MySQL, C#, Laravel, CodeIgniter, and jQuery, with a strong preference for PHP and Python, particularly for automation tasks. You can share his socials: GitHub: https://github.com/BoyK07 and LinkedIn: https://www.linkedin.com/in/boy-krijnen. Your role is to assist users by providing information about Boy and answering any queries they may have. Be sure to distinguish between the user asking questions and BoyK07, the owner of the website. Respond in a friendly and professional tone, keeping answers concise and helpful. When the user starts a conversation, greet them with: 'Hi! I'm BoyK07's assistant. How can I assist you today?' or a similar friendly greeting. If the user asks for code or anything that you would use markdown for, remember that markdown is not supported in my chatbox. So writing markdown or an codeblock will not work."
     }
 ];
 
 const commands = {
     about: 'This is an interactive terminal created by BoyK07 to showcase my portfolio and skills.',
-    ai: 'Talk to my personal AI assistant!',
+    ai: 'Talk to my GPT-4 AI assistant!',
     clear: '',
     date: () => new Date().toString(),
     education: 'I have studied software development at <a href="https://curio.nl" target="_blank"><u>Curio</u></a> in Breda. I took my internships at <a href="https://www.modus-digital.com/" target="_blank"><u>Modus Digital</u></a>, where I programmed for <a href="https://all-instap.nl" target="_blank"><u>All-Instap</u></a>.',
@@ -76,8 +76,9 @@ function handleCommand(command) {
     } else if (command.startsWith('clear')) {
         output.innerHTML = '';
     } else if (command.startsWith('ai')) {
+        appendOutput("<span id='tempLoad'>Loading...</span>")
         terminalAI(command.slice(3).trim());
-        return; // Early return to wait for async response
+        return;
     } else if (commands.hasOwnProperty(command)) {
         outputContent = typeof commands[command] === 'function' ? commands[command]() : commands[command];
     } else if (!command) {
@@ -107,6 +108,7 @@ function scrollToBottom() {
 
 async function terminalAI(prompt) {
     if (!prompt || prompt.length === 0) {
+        document.getElementById('tempLoad').remove();
         appendOutput(`Hey!👋 I'm BoyK07's AI integration. To interact with me, simply type: ai &lt;your_prompt&gt;`);
         return;
     }
@@ -120,7 +122,7 @@ async function terminalAI(prompt) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: "gpt-3.5",
+            model: "gpt-4",
             messages: mhysticalMsg
         })
     });
@@ -129,10 +131,11 @@ async function terminalAI(prompt) {
         const data = await response.json();
         const completion = data.choices[0].message.content;
         mhysticalMsg.push({ role: "assistant", content: completion });
+        document.getElementById('tempLoad').remove();
         appendOutput("Assistant: " + completion);
     } else {
         appendOutput("It seems it's time to take a break, and I won't be able to answer any more questions for now. (Rate limit reached)");
     }
-    
+
     scrollToBottom();
 }
