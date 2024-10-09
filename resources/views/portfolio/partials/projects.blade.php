@@ -13,7 +13,7 @@ $laravelSvg = '<svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32
         <div class="text-left">
             <h1 class="text-4xl text-white font-bold w-fit">Projects</h1>
             <h2 class="text-2xl text-gray-400 w-[60%] mb-5">Here are some projects that I have worked on.</h2>
-            <a href="https://github.com/BoyK07?tab=repositories" class="bg-[#13152b] text-white border-2 border-white px-4 py-2 rounded-lg hover:bg-[#2c2e43]">All my projects</a>
+            <a href="https://github.com/BoyK07?tab=repositories" target="_blank" class="bg-[#13152b] text-white border-2 border-white px-4 py-2 rounded-lg hover:bg-[#2c2e43]">All my projects</a>
         </div>
 
         <div class="-ml-40 flex flex-row gap-4">
