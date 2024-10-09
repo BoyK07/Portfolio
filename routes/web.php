@@ -15,21 +15,16 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::group([], function() {
-    Route::view('/', 'portfolio.index')
-    ->name('home');
-
-    Route::view('/projects', 'portfolio.all-projects')
-        ->name('projects');
-
+    Route::view('/', 'portfolio.index')->name('home');
     Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
 });
 
-Route::view('admin', 'admin')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::view('admin', 'admin')
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+// Route::view('profile', 'profile')
+//     ->middleware(['auth'])
+//     ->name('profile');
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php'; //! Not working with authentication
