@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,24 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::group([], function() {
-    Route::view('/', 'portfolio.index')->name('home');
-    Route::post('/contact-submit', [ContactController::class, 'submit'])->name('contact.submit');
+    Route::get('/', [HomePageController::class, 'index'])->name('home');
+    Route::post('/contact-submit', [HomepageController::class, 'submit'])->name('contact.submit');
 });
 
-// Route::view('admin', 'admin')
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.projects.index');
+    Route::get('/create', [AdminController::class, 'create'])->name('admin.projects.create');
+    Route::post('/create', [AdminController::class, 'store'])->name('admin.projects.store');
+    Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('admin.projects.edit');
+    Route::patch('/edit/{id}', [AdminController::class, 'update'])->name('admin.projects.update');
+    Route::delete('/delete/{id}', [AdminController::class, 'destroy'])->name('admin.projects.destroy');
+});
 
-// Route::view('profile', 'profile')
-//     ->middleware(['auth'])
-//     ->name('profile');
 
-// require __DIR__.'/auth.php'; //! Not working with authentication
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

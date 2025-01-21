@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomEmailAdmin;
 use App\Mail\CustomEmailUser;
 
-class ContactController extends Controller
+class HomepageController extends Controller
 {
+    public function index()
+    {
+        return view('portfolio.index');
+    }
+
     public function submit(Request $request)
     {
         $validator = Validator::make($request->all(), [

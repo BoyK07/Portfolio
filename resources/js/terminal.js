@@ -13,7 +13,6 @@ const mhysticalMsg = [
 
 const commands = {
     about: 'This is an interactive terminal created by BoyK07 to showcase my portfolio and skills.',
-    ai: 'Talk to my GPT-4 AI assistant!',
     clear: '',
     date: () => new Date().toString(),
     education: 'I have studied software development at <a href="https://curio.nl" target="_blank"><u>Curio</u></a> in Breda. I took my internships at <a href="https://www.modus-digital.com/" target="_blank"><u>Modus Digital</u></a>, where I programmed for <a href="https://all-instap.nl" target="_blank"><u>All-Instap</u></a>.',
@@ -75,10 +74,6 @@ function handleCommand(command) {
         outputContent = command.slice(5);
     } else if (command.startsWith('clear')) {
         output.innerHTML = '';
-    } else if (command.startsWith('ai')) {
-        appendOutput("<span id='tempLoad'>Loading...</span>")
-        terminalAI(command.slice(3).trim());
-        return;
     } else if (commands.hasOwnProperty(command)) {
         outputContent = typeof commands[command] === 'function' ? commands[command]() : commands[command];
     } else if (!command) {
@@ -104,39 +99,4 @@ function appendOutput(content) {
 
 function scrollToBottom() {
     terminal.scrollTop = terminal.scrollHeight;
-}
-
-async function terminalAI(prompt) {
-    if (!prompt || prompt.length === 0) {
-        document.getElementById('tempLoad').remove();
-        appendOutput(`Hey!👋 I'm BoyK07's AI integration. To interact with me, simply type: ai &lt;your_prompt&gt;`);
-        return;
-    }
-
-    mhysticalMsg.push({ role: "user", content: prompt });
-
-    const response = await fetch(mhysticalURL, {
-        method: 'POST',
-        headers: {
-            'Mhystical-Api-Key': mhysticalAPI,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            model: "gpt-4",
-            messages: mhysticalMsg
-        })
-    });
-
-    if (response.ok) {
-        const data = await response.json();
-        const completion = data.choices[0].message.content;
-        mhysticalMsg.push({ role: "assistant", content: completion });
-        document.getElementById('tempLoad').remove();
-        appendOutput("Assistant: " + completion);
-    } else {
-        document.getElementById('tempLoad').remove();
-        appendOutput("Assistant: It seems it's time to take a break, and I won't be able to answer any more questions for now. (Rate limit reached)");
-    }
-
-    scrollToBottom();
 }
