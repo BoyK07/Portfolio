@@ -7,14 +7,17 @@
                 class="bg-[#13152b] text-white border-2 border-white px-4 py-2 rounded-lg hover:bg-[#2c2e43]">All my
                 projects</a>
             <div class="mt-4 flex gap-2">
-                <button onclick="filterProjects('')" class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">All</button>
+                <button onclick="filterProjects('')"
+                    class="filter-btn bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">All</button>
                 @foreach ($tags as $tag)
-                    <button onclick="filterProjects('{{ $tag }}')" class="filter-btn bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-900">{{ $tag }}</button>
+                    <button onclick="filterProjects('{{ $tag }}')"
+                        class="filter-btn bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-900">{{ $tag }}</button>
                 @endforeach
             </div>
         </div>
         @foreach ($projects as $project)
-            <div class="bg-[#2c2e43] p-4 rounded-lg w-full h-[220px] flex flex-col project" data-tags="{{ $project->tags }}">
+            <div class="bg-[#2c2e43] p-4 rounded-lg w-full h-[220px] flex flex-col project"
+                data-tags="{{ $project->tags }}">
                 <div class="flex justify-between font-bold">
                     <h3 class="text-xl">{{ $project->title }}</h3>
                 </div>
