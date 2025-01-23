@@ -17,9 +17,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "@tsparticles/engine": "^3.5.0",
         "rollup": "^4.22.4",
-        "tsparticles-preset-stars": "^2.12.0",
         "typed.js": "^2.1.0"
     }
 }
