@@ -1,4 +1,4 @@
-/<?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('url')->nullable();
             $table->string('github')->nullable();
+            $table->string('tags')->nullable();
             $table->timestamps();
         });
     }

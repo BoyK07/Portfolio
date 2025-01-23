@@ -28,6 +28,10 @@
                             <label for="github" class="block text-gray-400 text-sm font-bold mb-2">GitHub:</label>
                             <input type="text" name="github" id="github" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-gray-200">
                         </div>
+                        <div class="mb-4">
+                            <label for="tags" class="block text-gray-400 text-sm font-bold mb-2">Tags:</label>
+                            <input type="text" name="tags" id="tags" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-gray-200">
+                        </div>
                     </div>
                     <div class="flex items-center justify-between">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

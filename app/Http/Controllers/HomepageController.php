@@ -14,7 +14,11 @@ class HomepageController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('portfolio.index')->with('projects', $projects);
+        $tags = $projects->pluck('tags')->filter()->unique()->flatMap(function ($tags) {
+            return explode(',', $tags);
+        })->unique();
+
+        return view('portfolio.index', compact('projects', 'tags'));
     }
 
     public function submit(Request $request)

@@ -21,6 +21,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'tags' => 'nullable|string',
         ]);
 
         // Return with error message if validation is wrong
@@ -33,6 +34,7 @@ class AdminController extends Controller
         $project->description = $validated['description'];
         $project->url = $request->url ? $request->url : null;
         $project->github = $request->github ? $request->github : null;
+        $project->tags = $request->tags ? str_replace(', ', ',', $request->tags) : null;
         $project->save();
 
         return redirect()->route('admin.projects.index');
@@ -59,6 +61,7 @@ class AdminController extends Controller
         $project->description = $validated['description'];
         $project->url = $request->url ? $request->url : null;
         $project->github = $request->github ? $request->github : null;
+        $project->tags = $request->tags ? str_replace(', ', ',', $request->tags) : null;
         $project->save();
 
         return redirect()->route('admin.projects.index');

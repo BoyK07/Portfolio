@@ -17,6 +17,7 @@
                             <th class="px-6 py-3 border-b-2 border-gray-600 text-left leading-4 text-blue-400 tracking-wider">Description</th>
                             <th class="px-6 py-3 border-b-2 border-gray-600 text-left leading-4 text-blue-400 tracking-wider">URL</th>
                             <th class="px-6 py-3 border-b-2 border-gray-600 text-left leading-4 text-blue-400 tracking-wider">GitHub</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-600 text-left leading-4 text-blue-400 tracking-wider">Tags</th>
                             <th class="px-6 py-3 border-b-2 border-gray-600"></th>
                         </tr>
                     </thead>
@@ -26,7 +27,8 @@
                                 <td class="px-6 py-4 border-b border-gray-600 text-gray-200">{{ Str::limit($project->title, 20) }}</td>
                                 <td class="px-6 py-4 border-b border-gray-600 text-gray-200">{{ Str::limit($project->description, 20) }}</td>
                                 <td class="px-6 py-4 border-b border-gray-600 text-gray-200">{{ Str::limit($project->url, 20) ?? "N/A" }}</td>
-                                <td class="px-6 py-4 border-b border-gray-600 text-gray-200">{{ Str::limit($project->github, 20) ?? "N/A"}}</td>
+                                <td class="px-6 py-4 border-b border-gray-600 text-gray-200">{{ Str::limit($project->github, 20) ?? "N/A" }}</td>
+                                <td class="px-6 py-4 border-b border-gray-600 text-gray-200">{{ Str::limit($project->tags, 20) ?? "N/A" }}</td>
                                 <td class="px-6 py-4 border-b border-gray-600 text-right">
                                     <a href="{{ route('admin.projects.edit', $project->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-700">Edit</a>
                                     <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="inline-block" onsubmit="return confirmDeletion('{{ $project->title }}')">
