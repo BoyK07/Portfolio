@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomEmailAdmin;
 use App\Mail\CustomEmailUser;
+use App\Models\Project;
 
 class HomepageController extends Controller
 {
     public function index()
     {
-        return view('portfolio.index');
+        $projects = Project::all();
+        return view('portfolio.index')->with('projects', $projects);
     }
 
     public function submit(Request $request)
