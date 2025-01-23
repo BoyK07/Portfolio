@@ -20,7 +20,7 @@
                 </div>
                 <p class="text-gray-400 flex flex-col gap-1 flex-grow">
                     <span>{{ $project->description }}</span>
-                <div class="flex justify-between">
+                <div class="flex justify-between mt-4"> <!-- Added margin-top here -->
                     <div class="flex items-center gap-2">
                         @if ($project->url)
                             <a href="{{ $project->url }}" target="_blank" class="flex items-center">
